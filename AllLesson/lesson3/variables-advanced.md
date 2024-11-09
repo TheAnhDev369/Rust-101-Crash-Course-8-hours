@@ -32,3 +32,27 @@ Tuple cho phép bạn nhóm nhiều giá trị có thể có kiểu dữ liệu 
 6. Array (Mảng)
 Array là một danh sách cố định các phần tử có cùng kiểu dữ liệu.
 Kích thước của mảng phải được xác định khi khai báo.
+
+7. String Types (Kiểu chuỗi)
+    Rust có hai loại chuỗi:
+
+    String: Một kiểu chuỗi động, có thể thay đổi(mutable).
+    Thường được sử dụng khi cần xây dựng và thay đổi nội dung chuỗi
+
+
+    &str: Một chuỗi không thay đổi, kiểu tham chiếu đến chuỗi tĩnh.
+    Thường dùng cho các chuỗi cố định, được lưu trong bộ nhớ chỉ đọc
+
+8. Unit Type (Kiểu đơn vị)
+    (): Đây là kiểu đặc biệt trong Rust, dùng để đại diện cho "không có giá trị", tương tự như void trong các ngôn ngữ khác
+
+9. Option Type (Kiểu tùy chọn)
+    Option là một enum, đại diện cho một giá trị có thể có hoặc không có. Nó có hai variant:
+    Some(T): Chứa một giá trị của kiểu T.
+    None: Không có giá trị nào
+
+10. Result Type (Kiểu kết quả)
+Result là một enum dùng để biểu thị kết quả thành công hoặc thất bại của một phép toán. 
+Nó có hai variant:
+    Ok(T): Chứa kết quả thành công với giá trị kiểu T.
+    Err(E): Chứa lỗi với giá trị kiểu E.

@@ -1,19 +1,19 @@
-use actix_web::{get, App, HttpServer, HttpResponse, Responder, web};
+use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
 use tokio::process::Command;
 
 async fn index() -> impl Responder {
-    let html = include_str!("../static/index.html");  // Đảm bảo file index.html nằm trong thư mục static
-    HttpResponse::Ok()
-        .content_type("text/html")
-        .body(html)
+    let html = include_str!("../static/index.html"); // Đảm bảo file index.html nằm trong thư mục static
+    HttpResponse::Ok().content_type("text/html").body(html)
 }
 
 #[get("/lesson1")]
 async fn lesson1() -> impl Responder {
-    let lesson_name = "Lesson 1";  
+    let lesson_name = "Lesson 1";
     let lesson_content = r#"
-        <p>Đây là nội dung bài học 1.</p>
-        <p>Bạn có thể thêm mã nguồn hoặc thông tin liên quan tại đây.</p>
+        <p>Đây là nội dung bài học .</p>
+        <p>Xem thêm mã nguồn và thông tin liên quan tại đây.</p>
+        <a href="https://rust-tieng-viet.github.io/index.html">Rust Tiếng Việt</a>
+        
     "#;
 
     // Đọc template HTML và thay thế các chỗ trống
@@ -36,7 +36,9 @@ async fn lesson1() -> impl Responder {
         } else {
             String::from_utf8_lossy(&output.stderr).to_string()
         }
-    }).await.unwrap();
+    })
+    .await
+    .unwrap();
 
     // Thay thế {{lesson_code}} với kết quả từ cargo run (output)
     page = page.replace("{{lesson_code}}", &output);
@@ -46,12 +48,15 @@ async fn lesson1() -> impl Responder {
         .body(page) // Trả về HTML với kết quả của cargo run
 }
 
+
+
 #[get("/lesson2")]
 async fn lesson2() -> impl Responder {
-    let lesson_name = "Lesson 1";  
+    let lesson_name = "Lesson 2";
     let lesson_content = r#"
-        <p>Đây là nội dung bài học 1.</p>
-        <p>Bạn có thể thêm mã nguồn hoặc thông tin liên quan tại đây.</p>
+        <p>Đây là nội dung bài học 2.</p>
+       <p>Xem thêm mã nguồn và thông tin liên quan tại đây.</p>
+        <a href="https://rust-tieng-viet.github.io/index.html">Rust Tiếng Việt</a></p>
     "#;
 
     // Đọc template HTML và thay thế các chỗ trống
@@ -74,7 +79,9 @@ async fn lesson2() -> impl Responder {
         } else {
             String::from_utf8_lossy(&output.stderr).to_string()
         }
-    }).await.unwrap();
+    })
+    .await
+    .unwrap();
 
     // Thay thế {{lesson_code}} với kết quả từ cargo run (output)
     page = page.replace("{{lesson_code}}", &output);
@@ -86,10 +93,11 @@ async fn lesson2() -> impl Responder {
 
 #[get("/lesson3")]
 async fn lesson3() -> impl Responder {
-    let lesson_name = "Lesson 1";  
+    let lesson_name = "Lesson 3";
     let lesson_content = r#"
-        <p>Đây là nội dung bài học 1.</p>
-        <p>Bạn có thể thêm mã nguồn hoặc thông tin liên quan tại đây.</p>
+        <p>Đây là nội dung bài học 3.</p>
+        <p>Xem thêm mã nguồn và thông tin liên quan tại đây.</p>
+        <a href="https://rust-tieng-viet.github.io/index.html">Rust Tiếng Việt</a></p>
     "#;
 
     // Đọc template HTML và thay thế các chỗ trống
@@ -112,7 +120,9 @@ async fn lesson3() -> impl Responder {
         } else {
             String::from_utf8_lossy(&output.stderr).to_string()
         }
-    }).await.unwrap();
+    })
+    .await
+    .unwrap();
 
     // Thay thế {{lesson_code}} với kết quả từ cargo run (output)
     page = page.replace("{{lesson_code}}", &output);
@@ -123,16 +133,17 @@ async fn lesson3() -> impl Responder {
 }
 
 
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
-            .service(web::resource("/").to(index)) 
-            .service(lesson1)  
-            .service(lesson2)  
-            .service(lesson3)  
+            .service(web::resource("/").to(index))
+            .service(lesson1)
+            .service(lesson2)
+            .service(lesson3)
     })
-    .bind("127.0.0.1:8080")?  
+    .bind("127.0.0.1:8080")?
     .run()
     .await
 }
