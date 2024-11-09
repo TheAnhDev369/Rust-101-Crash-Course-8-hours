@@ -4,5 +4,17 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+
+# Thiết lập thư viện Actix Web: actix-web
+# Actix Web là một framework web mạnh mẽ cho Rust, hỗ trợ phát triển các ứng dụng web hiệu suất cao.
+# Nó cung cấp các tính năng như routing, middleware, và xử lý HTTP request/response.
+actix-web = "4.9.0"
+
+# Thiết lập thư viện async runtime: tokio
+# Tokia cung cấp nền tảng xử lý bất đồng bộ, giúp chạy các tác vụ song song
+# và hỗ trợ async/await cho các tác vụ I/O, xử lý mạng, v.v.
+tokio = { version = "1", features = ["full"] }
+
+# Thiết lập workspace cho tất cả bài học
 [workspace]
-members = ["AllLesson/Lesson1", "AllLesson/Lesson2", "AllLesson/Lesson3-Variables"]
+members = ["AllLesson/lesson1", "AllLesson/lesson2", "AllLesson/lesson3"]
