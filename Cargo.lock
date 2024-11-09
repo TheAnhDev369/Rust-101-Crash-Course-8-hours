@@ -11,5 +11,9 @@ name = "Lesson2"
 version = "0.1.0"
 
 [[package]]
+name = "Lesson3-Variables"
+version = "0.1.0"
+
+[[package]]
 name = "Rust-101-Crash-Course"
 version = "0.1.0"

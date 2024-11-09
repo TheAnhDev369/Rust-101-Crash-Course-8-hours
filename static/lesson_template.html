@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{lesson_name}} - Bài học</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <style>
+        /* Đặt kiểu dáng cho body */
+        body {
+            font-family: 'JetBrains Mono', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+            align-items: center; /* Căn giữa nội dung theo chiều dọc */
+            flex-direction: column; /* Các phần tử sẽ xếp theo chiều dọc */
+            min-height: 100vh; /* Đảm bảo chiều cao của body chiếm hết màn hình */
+            padding: 20px; /* Thêm khoảng cách xung quanh */
+        }
+
+        /* Đặt kiểu dáng cho phần header */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #4a90e2;
+            margin: 0;
+        }
+
+        /* Đặt kiểu dáng cho phần nội dung bài học */
+        #lesson-content {
+            width: 100%;
+            max-width: 800px; /* Giới hạn chiều rộng của nội dung */
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ddd;
+            overflow-x: auto; /* Cho phép cuộn ngang nếu mã quá dài */
+        }
+
+        /* Đặt kiểu dáng cho phần footer */
+        footer {
+            text-align: center;
+            color: #777;
+            margin-top: 20px;
+        }
+
+        /* Thẻ <pre> và <code> giúp hiển thị mã nguồn đẹp hơn */
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto; /* Cho phép cuộn ngang */
+            white-space: pre-wrap; /* Cho phép xuống dòng trong mã */
+            word-wrap: break-word; /* Đảm bảo không bị tràn ra ngoài */
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        /* Responsive: Điều chỉnh khi màn hình nhỏ */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            #lesson-content {
+                padding: 15px;
+                max-width: 100%;
+            }
+
+            pre {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Chào mừng đến với bài học {{lesson_name}}</h1>
+    </header>
+    <main>
+        <div id="lesson-content">
+            <h2>Nội dung bài học:</h2>
+            <div>{{lesson_content}}</div>
+
+            <h3>Code mẫu:</h3>
+            <!-- Hiển thị code mẫu với định dạng đẹp -->
+            <pre><code>{{lesson_code}}</code></pre>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Tất cả quyền lợi được bảo lưu.</p>
+    </footer>
+</body>
+
+</html>

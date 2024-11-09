@@ -5,4 +5,4 @@ edition = "2021"
 
 [dependencies]
 [workspace]
-members = ["AllLesson/Lesson1", "AllLesson/Lesson2"]
+members = ["AllLesson/Lesson1", "AllLesson/Lesson2", "AllLesson/Lesson3-Variables"]
