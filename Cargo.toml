@@ -1,5 +1,5 @@
 [package]
-name = "Rust-101-Crash-Course"
+name = "rust-101-crash-course"
 version = "0.1.0"
 edition = "2021"
 
@@ -15,6 +15,9 @@ actix-web = "4.9.0"
 # và hỗ trợ async/await cho các tác vụ I/O, xử lý mạng, v.v.
 tokio = { version = "1", features = ["full"] }
 
+tera = "1.20.0"
+
 # Thiết lập workspace cho tất cả bài học
 [workspace]
-members = ["AllLesson/lesson1", "AllLesson/lesson2", "AllLesson/lesson3"]
+members = ["AllLesson/lesson1", "AllLesson/lesson2", "AllLesson/lesson3", "AllLesson/lesson4"]
+
