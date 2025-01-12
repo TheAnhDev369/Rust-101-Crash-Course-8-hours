@@ -20,5 +20,11 @@ actix-files = "0.6" # Thêm dòng này để sử dụng actix-files
 
 # Thiết lập workspace cho tất cả bài học
 [workspace]
-members = ["AllLesson/lesson1", "AllLesson/lesson2", "AllLesson/lesson3", "AllLesson/lesson4", "AllLesson/lesson5"]
-
+members = [
+    "AllLesson/lesson1",
+    "AllLesson/lesson2",
+    "AllLesson/lesson3",
+    "AllLesson/lesson4",
+    "AllLesson/lesson5",
+    "AllLesson/lesson6",
+]

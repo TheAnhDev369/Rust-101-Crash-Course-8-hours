@@ -3,7 +3,6 @@ use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
 use tera::{Context, Tera};
 use tokio::process::Command;
 
-
 async fn index() -> impl Responder {
     // Khởi tạo Tera và context
     let tera = match Tera::new("static/**/*") {
@@ -13,10 +12,12 @@ async fn index() -> impl Responder {
             return HttpResponse::InternalServerError().finish();
         }
     };
-    
+
     let mut context = Context::new();
     // Thêm danh sách bài học vào context
-    let lessons = vec!["lesson1", "lesson2", "lesson3", "lesson4", "lesson5"];
+    let lessons = vec![
+        "lesson1", "lesson2", "lesson3", "lesson4", "lesson5", "lesson6",
+    ];
     context.insert("lessons", &lessons);
 
     // Render template với context
@@ -43,7 +44,9 @@ async fn render_lesson(lesson_name: &str, lesson_dir: String) -> String {
     context.insert("lesson_content", &lesson_content);
 
     // Tạo danh sách bài học (để sử dụng trong vòng lặp for)
-    let lessons = vec!["lesson1", "lesson2", "lesson3", "lesson4"];
+    let lessons = vec![
+        "lesson1", "lesson2", "lesson3", "lesson4", "lesson5", "lesson6",
+    ];
     context.insert("lessons", &lessons);
 
     // Chạy lệnh cargo run bất đồng bộ với tokio::process::Command và lấy kết quả
@@ -117,6 +120,14 @@ async fn lesson5() -> impl Responder {
         .body(rendered)
 }
 
+#[get("/lesson6")]
+async fn lesson6() -> impl Responder {
+    let rendered = render_lesson("Lesson 6", "AllLesson/lesson6".to_string()).await;
+    HttpResponse::Ok()
+        .content_type("text/html; charset=utf-8")
+        .body(rendered)
+}
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
@@ -129,13 +140,12 @@ async fn main() -> std::io::Result<()> {
             .service(lesson3)
             .service(lesson4)
             .service(lesson5)
-
+            .service(lesson6)
     })
     .bind("127.0.0.1:8080")?
     .run()
     .await
 }
-
 
 // use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
 // use tokio::process::Command;
