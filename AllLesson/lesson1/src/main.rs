@@ -1,6 +1,5 @@
 fn main() {
+    //  Chương trình Hello World đầu tiên
     println!("Hello, world!");
-    println!("Hello and GoodBye");
-    let x = 100;
-    println!("{}", x);
+    println!("Hello and GoodBye, See you again");
 }
